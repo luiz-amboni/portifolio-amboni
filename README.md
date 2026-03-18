@@ -113,3 +113,8 @@ Desenvolvido por **Luiz Otávio Amboni**.
 [LinkedIn](https://www.linkedin.com/in/luiz-otavio-a-892a0a122/) • 
 [WhatsApp](https://wa.me/5548996815062) • 
 [Email](mailto:luiz.amboniii@gmail.com)
+
+## 📝 Licença
+
+Este projeto está sob licença proprietária. Todos os direitos reservados a **Luiz Otávio Amboni**.
+O código está disponível apenas para fins de estudo e apresentação de portfólio. A reprodução, distribuição ou uso comercial deste código ou design sem autorização expressa é proibida.

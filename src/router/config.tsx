@@ -5,6 +5,7 @@ import Resume from "../pages/resume/page";
 import Especialidades from "../pages/especialidades/page";
 import Projetos from "../pages/projetos/page";
 import Depoimentos from "../pages/depoimentos/page";
+import PrivacyPolicy from "../pages/privacy/page";
 
 const routes: RouteObject[] = [
   {
@@ -26,6 +27,10 @@ const routes: RouteObject[] = [
   {
     path: "/depoimentos",
     element: <Depoimentos />,
+  },
+  {
+    path: "/politica-privacidade",
+    element: <PrivacyPolicy />,
   },
   {
     path: "*",

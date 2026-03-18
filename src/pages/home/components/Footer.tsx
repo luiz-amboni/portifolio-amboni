@@ -108,6 +108,9 @@ export default function Footer() {
             <Link to="/curriculo" className="text-[#404040] text-[13px] hover:text-[#c8a96e] transition-all duration-300 cursor-pointer">
               Currículo
             </Link>
+            <Link to="/politica-privacidade" className="text-[#404040] text-[13px] hover:text-[#c8a96e] transition-all duration-300 cursor-pointer">
+              Privacidade
+            </Link>
           </div>
         </div>
       </div>
