@@ -29,13 +29,15 @@ const ContactSection = () => {
       formDataToSend.append('projectType', formData.projectType);
       formDataToSend.append('message', formData.message);
 
-      // TODO: Para publicar o site, crie uma conta no Formspree (https://formspree.io)
-      // e substitua a URL abaixo ou implemente seu próprio backend.
-      // Exemplo: fetch('https://formspree.io/f/SEU_ID', ...)
-      
-      // Simulando sucesso para visualização
-      const response = { ok: true }; 
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Fake delay
+      const endpoint = 'https://formspree.io/f/mqeywdob';
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
       if (response.ok) {
         setSubmitStatus('success');
