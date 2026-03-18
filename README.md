@@ -85,7 +85,7 @@ Pré-requisitos: Node.js (v18+) instalado.
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/luiz-amboni/portfolio-react.git
+   git clone https://github.com/luiz-amboni/portifolio-amboni.git
    cd portfolio-react
    ```
 
