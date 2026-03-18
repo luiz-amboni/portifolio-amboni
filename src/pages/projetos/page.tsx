@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import DefaultLayout from '../../components/DefaultLayout';
+import CtaSection from '../../components/CtaSection';
 
 export default function ProjetosPage() {
   const [selectedProject, setSelectedProject] = useState(0);
@@ -182,20 +183,12 @@ export default function ProjetosPage() {
           </div>
 
           {/* CTA Section */}
-          <div className="text-center bg-[#141414] border border-[#1e1e1e] rounded-2xl p-12 md:p-16">
-            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-              Gostou do que viu?
-            </h2>
-            <p className="text-[#909090] text-lg mb-8 max-w-2xl mx-auto">
-              Vamos criar algo incrível juntos. Entre em contato para discutir seu próximo projeto.
-            </p>
-            <Link
-              to="/#contato"
-              className="inline-block px-8 py-4 bg-[#c8a96e] text-[#0a0a0a] font-bold rounded-full hover:bg-[#d4b87d] transition-all duration-300 cursor-pointer whitespace-nowrap"
-            >
-              Iniciar um Projeto
-            </Link>
-          </div>
+          {/* Nota: Adaptado para usar o componente, mantendo o estilo visual consistente */}
+          <CtaSection 
+            title="Gostou do que viu?"
+            description="Vamos criar algo incrível juntos. Entre em contato para discutir seu próximo projeto."
+            primaryButtonText="Iniciar um Projeto"
+          />
         </div>
       </section>
     </DefaultLayout>

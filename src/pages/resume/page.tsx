@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import WhatsAppButton from '../../components/WhatsAppButton';
+import { CONTACT_INFO } from '../../constants';
 
 interface TimelineItem {
   company?: string;
@@ -343,9 +344,9 @@ export default function ResumePage() {
             </div>
             <div style={{ textAlign: 'right', fontSize: '10px', color: '#ddd', lineHeight: 1.6 }}>
               <div>Criciúma, SC — Remoto/Híbrido</div>
-              <div>luiz.amboniii@gmail.com</div>
-              <div>(48) 99681-5062</div>
-              <div>linkedin.com/in/luiz-otavio-a-892a0a122</div>
+              <div>{CONTACT_INFO.EMAIL}</div>
+              <div>{CONTACT_INFO.PHONE}</div>
+              <div>linkedin.com/in/luiz-otavio-a</div>
             </div>
           </div>
         </div>
@@ -456,7 +457,7 @@ export default function ResumePage() {
         {/* Rodapé */}
         <div style={{ marginTop: '20px', paddingTop: '10px', borderTop: '1px solid #f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontSize: '9px', color: '#ccc' }}>© {new Date().getFullYear()} Luiz Otávio Amboni</span>
-          <span style={{ fontSize: '9px', color: '#c8a96e' }}>luiz.amboniii@gmail.com · (48) 99681-5062</span>
+          <span style={{ fontSize: '9px', color: '#c8a96e' }}>{CONTACT_INFO.EMAIL} · {CONTACT_INFO.PHONE}</span>
         </div>
 
       </div>
@@ -512,15 +513,15 @@ export default function ResumePage() {
                 <i className="ri-map-pin-line text-[#c8a96e]"></i>
                 Criciúma, SC — Brasil
               </span>
-              <a href="mailto:luiz.amboniii@gmail.com" className="flex items-center gap-2 hover:text-[#c8a96e] transition-colors cursor-pointer">
+              <a href={`mailto:${CONTACT_INFO.EMAIL}`} className="flex items-center gap-2 hover:text-[#c8a96e] transition-colors cursor-pointer">
                 <i className="ri-mail-line text-[#c8a96e]"></i>
-                luiz.amboniii@gmail.com
+                {CONTACT_INFO.EMAIL}
               </a>
-              <a href="https://wa.me/5548996815062" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#c8a96e] transition-colors cursor-pointer">
+              <a href={CONTACT_INFO.WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#c8a96e] transition-colors cursor-pointer">
                 <i className="ri-whatsapp-line text-[#c8a96e]"></i>
-                (48) 99681-5062
+                {CONTACT_INFO.PHONE}
               </a>
-              <a href="https://www.linkedin.com/in/luiz-otavio-a-892a0a122/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#c8a96e] transition-colors cursor-pointer">
+              <a href={CONTACT_INFO.LINKEDIN} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#c8a96e] transition-colors cursor-pointer">
                 <i className="ri-linkedin-box-line text-[#c8a96e]"></i>
                 LinkedIn
               </a>
@@ -673,7 +674,7 @@ export default function ResumePage() {
             </h2>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="https://wa.me/5548996815062"
+                href={CONTACT_INFO.WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-[#0f0f0f] hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg"
@@ -683,7 +684,7 @@ export default function ResumePage() {
                 Falar no WhatsApp
               </a>
               <a
-                href="mailto:luiz.amboniii@gmail.com"
+                href={`mailto:${CONTACT_INFO.EMAIL}`}
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-[#c8a96e]/40 text-[#c8a96e] font-bold rounded-xl hover:bg-[#c8a96e]/10 hover:border-[#c8a96e] transition-all duration-300 whitespace-nowrap cursor-pointer"
               >
                 <i className="ri-mail-line text-lg"></i>

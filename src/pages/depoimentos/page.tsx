@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import DefaultLayout from '../../components/DefaultLayout';
+import CtaSection from '../../components/CtaSection';
 
 const testimonials = [
   {
@@ -225,21 +226,11 @@ export default function DepoimentosPage() {
           </div>
 
           {/* CTA */}
-          <div className="text-center bg-[#141414] border border-[#1e1e1e] rounded-2xl p-12 md:p-16">
-            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-              Quer ser o próximo case de sucesso?
-            </h2>
-            <p className="text-[#909090] text-lg mb-8 max-w-2xl mx-auto">
-              Vamos conversar sobre como posso ajudar você a alcançar resultados extraordinários.
-            </p>
-            <Link
-              to="/#contato"
-              className="inline-block px-8 py-4 font-bold rounded-full hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap text-[#0a0a0a]"
-              style={{ background: 'linear-gradient(135deg, #c8a96e, #b8945a)' }}
-            >
-              Começar Meu Projeto
-            </Link>
-          </div>
+          <CtaSection
+            title="Quer ser o próximo case de sucesso?"
+            description="Vamos conversar sobre como posso ajudar você a alcançar resultados extraordinários."
+            primaryButtonText="Começar Meu Projeto"
+          />
         </div>
       </section>
     </DefaultLayout>

@@ -1,5 +1,6 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { CONTACT_INFO } from '../../../constants';
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -29,7 +30,17 @@ const ContactSection = () => {
       formDataToSend.append('projectType', formData.projectType);
       formDataToSend.append('message', formData.message);
 
-      const endpoint = 'https://formspree.io/f/mqeywdob';
+      // SEGURANÇA: A URL do Formspree foi movida para variáveis de ambiente.
+      // Para configurar, crie um arquivo .env na raiz do projeto e adicione:
+      // VITE_FORMSPREE_ENDPOINT=sua_url_aqui
+      const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
+      if (!endpoint) {
+        console.error('ERRO DE CONFIGURAÇÃO: VITE_FORMSPREE_ENDPOINT não encontrada no arquivo .env');
+        setSubmitStatus('error');
+        setTimeout(() => setSubmitStatus('idle'), 3000);
+        return;
+      }
 
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -55,11 +66,19 @@ const ContactSection = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const inputClass = "w-full px-4 py-3 bg-[#141414] border border-[#1e1e1e] rounded-xl text-white placeholder-[#404040] focus:outline-none focus:border-[#c8a96e]/60 focus:ring-1 focus:ring-[#c8a96e]/30 transition-all duration-300 text-sm";
+
+  interface ContactItem {
+    icon: string;
+    title: string;
+    sub: string;
+    link?: string;
+    label: string;
+  }
 
   return (
     <section ref={ref} id="contato" className="relative py-20 md:py-32 overflow-hidden" style={{ background: '#0f0f0f' }}>
@@ -145,26 +164,26 @@ const ContactSection = () => {
 
             {/* Informações de Contato */}
             <div className={`space-y-5 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {[
+              {([
                 {
                   icon: 'ri-whatsapp-line',
                   title: 'WhatsApp',
                   sub: 'Resposta rápida e direta',
-                  link: 'https://wa.me/5548996815062?text=Olá%20Luiz!%20Gostaria%20de%20conversar%20sobre%20um%20projeto.',
-                  label: '(48) 99681-5062'
+                  link: `${CONTACT_INFO?.WHATSAPP_LINK || '#'}?text=${encodeURIComponent('Olá Luiz! Gostaria de conversar sobre um projeto.')}`,
+                  label: CONTACT_INFO.PHONE
                 },
                 {
                   icon: 'ri-mail-line',
                   title: 'Email',
                   sub: 'Para propostas formais',
-                  link: 'mailto:luiz.amboniii@gmail.com',
-                  label: 'luiz.amboniii@gmail.com'
+                  link: `mailto:${CONTACT_INFO?.EMAIL || ''}`,
+                  label: CONTACT_INFO.EMAIL
                 },
                 {
                   icon: 'ri-map-pin-line',
                   title: 'Localização',
                   sub: 'Atendimento remoto e presencial',
-                  label: 'Criciúma, Santa Catarina'
+                  label: CONTACT_INFO.LOCATION
                 },
                 {
                   icon: 'ri-time-line',
@@ -172,7 +191,7 @@ const ContactSection = () => {
                   sub: 'Segunda a Sexta',
                   label: '09:00 – 18:00'
                 }
-              ].map((item, i) => (
+              ] as ContactItem[]).map((item, i) => (
                 <div key={i} className="bg-[#141414] border border-[#1e1e1e] rounded-xl p-6 hover:border-[#c8a96e]/30 transition-all duration-300 group">
                   <div className="flex items-start gap-4">
                     <div className="w-11 h-11 bg-[#c8a96e]/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#c8a96e]/20 transition-all duration-300">

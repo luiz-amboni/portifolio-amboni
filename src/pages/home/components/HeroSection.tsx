@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { CONTACT_INFO } from '../../../constants';
 
 export default function HeroSection() {
   const [currentRole, setCurrentRole] = useState(0);
@@ -193,7 +194,7 @@ export default function HeroSection() {
               style={visible(200)}
             >
               <a
-                href="https://wa.me/5548996815062"
+                href={CONTACT_INFO.WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 rounded-xl font-bold text-[#0f0f0f] hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg"

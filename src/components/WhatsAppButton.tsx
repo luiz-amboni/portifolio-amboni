@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { CONTACT_INFO } from '../constants';
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
-  const phone = '5548996815062';
   const message = encodeURIComponent('Olá! Vim pelo seu portfólio e gostaria de conversar.');
-  const url = `https://wa.me/${phone}?text=${message}`;
+  // Garante que o link exista antes de montar a URL
+  const url = `${CONTACT_INFO?.WHATSAPP_LINK}?text=${message}`;
 
   return (
     <div

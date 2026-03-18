@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import { CONTACT_INFO } from '../../../constants';
 
 export default function Footer() {
   const socialLinks = [
-    { icon: 'ri-linkedin-fill', url: 'https://www.linkedin.com/in/luiz-otavio-a-892a0a122/' },
+    { icon: 'ri-linkedin-fill', url: CONTACT_INFO?.LINKEDIN || '#' },
     { icon: 'ri-github-fill', url: 'https://github.com/luiz-amboni' },
     { icon: 'ri-behance-fill', url: 'https://www.behance.net/luizamboni' },
-    { icon: 'ri-mail-line', url: 'mailto:luiz.amboniii@gmail.com' }
+    { icon: 'ri-mail-line', url: `mailto:${CONTACT_INFO?.EMAIL || ''}` }
   ];
 
   return (
@@ -37,18 +38,18 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-8">
             <div>
               <p className="text-[#c8a96e] uppercase text-[11px] font-mono tracking-wider mb-3">LOCALIZAÇÃO</p>
-              <p className="text-[#909090] text-sm">Criciúma/SC — Brasil</p>
+              <p className="text-[#909090] text-sm">{CONTACT_INFO.LOCATION}</p>
             </div>
             <div>
               <p className="text-[#c8a96e] uppercase text-[11px] font-mono tracking-wider mb-3">TELEFONE</p>
-              <a href="https://wa.me/5548996815062" target="_blank" rel="noopener noreferrer" className="text-[#909090] text-sm hover:text-[#c8a96e] transition-colors duration-300 cursor-pointer">
-                (48) 99681-5062
+              <a href={CONTACT_INFO.WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-[#909090] text-sm hover:text-[#c8a96e] transition-colors duration-300 cursor-pointer">
+                {CONTACT_INFO.PHONE}
               </a>
             </div>
             <div>
               <p className="text-[#c8a96e] uppercase text-[11px] font-mono tracking-wider mb-3">EMAIL</p>
-              <a href="mailto:luiz.amboniii@gmail.com" className="text-[#909090] text-sm hover:text-[#c8a96e] transition-colors duration-300 cursor-pointer">
-                luiz.amboniii@gmail.com
+              <a href={`mailto:${CONTACT_INFO.EMAIL}`} className="text-[#909090] text-sm hover:text-[#c8a96e] transition-colors duration-300 cursor-pointer">
+                {CONTACT_INFO.EMAIL}
               </a>
             </div>
           </div>
@@ -101,7 +102,7 @@ export default function Footer() {
             <Link to="/#contato" className="text-[#404040] text-[13px] hover:text-[#c8a96e] transition-all duration-300 cursor-pointer">
               Contato
             </Link>
-            <a href="https://www.linkedin.com/in/luiz-otavio-a-892a0a122/" target="_blank" rel="noopener noreferrer" className="text-[#404040] text-[13px] hover:text-[#c8a96e] transition-all duration-300 cursor-pointer">
+            <a href={CONTACT_INFO.LINKEDIN} target="_blank" rel="noopener noreferrer" className="text-[#404040] text-[13px] hover:text-[#c8a96e] transition-all duration-300 cursor-pointer">
               LinkedIn
             </a>
             <Link to="/curriculo" className="text-[#404040] text-[13px] hover:text-[#c8a96e] transition-all duration-300 cursor-pointer">

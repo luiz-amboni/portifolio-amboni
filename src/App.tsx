@@ -15,7 +15,7 @@ function ScrollToTop() {
 function App() {
   return (
     <I18nextProvider i18n={i18n}>
-      <BrowserRouter basename={__BASE_PATH__}>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <AppRoutes />
       </BrowserRouter>

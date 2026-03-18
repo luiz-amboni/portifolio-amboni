@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { CONTACT_INFO } from '../../../constants';
 
 export default function CTASection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -56,7 +57,7 @@ export default function CTASection() {
         </div>
 
         <a
-          href="https://wa.me/5548996815062?text=Olá%20Luiz!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
+          href={`${CONTACT_INFO.WHATSAPP_LINK}?text=${encodeURIComponent('Olá Luiz! Gostaria de conversar sobre um projeto.')}`}
           target="_blank"
           rel="noopener noreferrer"
           className={`inline-flex items-center gap-4 bg-[#0f0f0f]/80 border border-[#c8a96e]/50 rounded-full overflow-hidden hover:scale-105 transition-all duration-700 delay-300 group cursor-pointer shadow-[0_0_40px_rgba(200,169,110,0.2)] ${
