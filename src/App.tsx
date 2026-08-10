@@ -5,17 +5,20 @@ import i18n from "./i18n";
 import { useEffect } from "react";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    // Com âncora na URL (/projetos#isafe-crm) quem manda no scroll é a página de
+    // destino — subir para o topo aqui cancelaria o salto para o caso certo.
+    if (hash) return;
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
 function App() {
   return (
     <I18nextProvider i18n={i18n}>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter>
         <ScrollToTop />
         <AppRoutes />
       </BrowserRouter>

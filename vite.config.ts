@@ -3,12 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import { resolve } from "node:path";
 import AutoImport from "unplugin-auto-import/vite";
 
-const base = process.env.BASE_PATH || "/";
-// https://vite.dev/config/
 export default defineConfig({
-  define: {
-    __BASE_PATH__: JSON.stringify(base),
-  },
   plugins: [
     react(),
     AutoImport({
@@ -53,7 +48,6 @@ export default defineConfig({
             "Outlet",
           ],
         },
-        // React i18n
         {
           "react-i18next": ["useTranslation", "Trans"],
         },
@@ -61,10 +55,10 @@ export default defineConfig({
       dts: true,
     }),
   ],
-  base,
   build: {
-    sourcemap: true,
-    outDir: "out",
+    // Sourcemap de produção só engordava o deploy (1,7 MB) sem ninguém depurar por ele.
+    sourcemap: false,
+    outDir: "dist",
   },
   resolve: {
     alias: {

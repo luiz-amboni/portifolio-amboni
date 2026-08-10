@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { CONTACT_INFO } from '../../../constants';
+import { CONTACT_INFO, HEADLINE_STATS } from '../../../constants';
 
 export default function HeroSection() {
   const [currentRole, setCurrentRole] = useState(0);
@@ -11,10 +11,10 @@ export default function HeroSection() {
   const typingRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const roles = [
-    'Web & Portfolio Craftsman',
-    'UX/UI Designer',
-    'AI-Powered Builder',
-    'Full Stack Developer'
+    'Desenvolvedor full-stack',
+    'Sistemas sob medida',
+    'Integrações & automação',
+    'IA aplicada com critério',
   ];
 
   const greeting = 'Olá, eu sou';
@@ -67,7 +67,7 @@ export default function HeroSection() {
       setCurrentRole(prev => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [phase]);
+  }, [phase, roles.length]);
 
   const visible = (delay = 0) => ({
     opacity: phase >= 3 ? 1 : 0,
@@ -80,7 +80,6 @@ export default function HeroSection() {
 
       {/* Fundo animado */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Gradiente dourado superior direito */}
         <div
           className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] rounded-full"
           style={{
@@ -88,7 +87,6 @@ export default function HeroSection() {
             animation: 'pulseGlow 6s ease-in-out infinite',
           }}
         />
-        {/* Gradiente inferior esquerdo */}
         <div
           className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full"
           style={{
@@ -96,14 +94,12 @@ export default function HeroSection() {
             animation: 'pulseGlow 8s ease-in-out infinite reverse',
           }}
         />
-        {/* Linha diagonal decorativa */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: 'repeating-linear-gradient(45deg, #c8a96e 0px, #c8a96e 1px, transparent 1px, transparent 60px)',
           }}
         />
-        {/* Partículas flutuantes */}
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
@@ -121,11 +117,11 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="max-w-[1600px] mx-auto w-full flex-1">
-        <div className="flex flex-col items-center text-center">
+      <div className="max-w-[1600px] mx-auto w-full flex-1 flex items-center">
+        <div className="flex flex-col items-center text-center w-full">
           <div className="w-full max-w-3xl space-y-6 md:space-y-8">
 
-            {/* Badge — aparece junto com o greeting */}
+            {/* Badge */}
             <div
               style={{
                 opacity: phase >= 1 ? 1 : 0,
@@ -136,7 +132,7 @@ export default function HeroSection() {
             >
               <span className="w-2 h-2 rounded-full bg-[#c8a96e] animate-pulse flex-shrink-0" />
               <span className="font-mono text-[10px] md:text-xs text-[#c8a96e] tracking-wider">
-                WEB CRAFT · UX/UI · ARTIFICIAL INTELLIGENCE
+                CRM · E-COMMERCE · CHECKOUT · INTEGRAÇÕES · IA
               </span>
             </div>
 
@@ -157,9 +153,10 @@ export default function HeroSection() {
               </p>
             </div>
 
-            {/* Nome com glitch */}
+            {/* Nome com glitch. Os tamanhos são escolhidos para "LUIZ OTÁVIO" caber numa
+                linha a partir de md, e para o nome não encostar na borda em telas de 390px. */}
             <h1
-              className={`font-black text-5xl sm:text-6xl md:text-8xl leading-[0.92] tracking-tight ${glitch ? 'hero-glitch' : ''}`}
+              className={`font-black text-[40px] sm:text-6xl md:text-7xl lg:text-[86px] leading-[0.94] tracking-tight ${glitch ? 'hero-glitch' : ''}`}
               style={{
                 opacity: phase >= 2 ? 1 : 0,
                 transform: phase >= 2 ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.97)',
@@ -175,17 +172,21 @@ export default function HeroSection() {
 
             {/* Role rotativo */}
             <div style={{ ...visible(0), minHeight: '40px' }}>
-              <p className="text-xl md:text-3xl font-semibold text-[#c8a96e] role-fade">
+              <p key={currentRole} className="text-xl md:text-3xl font-semibold text-[#c8a96e] role-fade">
                 {roles[currentRole]}
               </p>
             </div>
 
             {/* Descrição */}
             <p
-              className="text-[#909090] text-base md:text-lg leading-relaxed max-w-xl mx-auto px-2 md:px-0"
+              className="text-[#909090] text-base md:text-lg leading-relaxed max-w-2xl mx-auto px-2 md:px-0"
               style={visible(100)}
             >
-              Crio sites, portfólios e experiências digitais que combinam UX/UI estratégico com inteligência artificial. Para profissionais e empresas que querem se destacar online.
+              Eu entendo a operação, escrevo o sistema, subo no servidor e mantenho no ar.{' '}
+              <span className="text-[#c0c0c0]">
+                CRM, e-commerce, checkout próprio, integração com ERP e automação com IA
+              </span>{' '}
+              — do banco de dados ao ar.
             </p>
 
             {/* Botões */}
@@ -194,46 +195,42 @@ export default function HeroSection() {
               style={visible(200)}
             >
               <a
-                href={CONTACT_INFO.WHATSAPP_LINK}
+                href={CONTACT_INFO.WHATSAPP_MSG}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 rounded-xl font-bold text-[#0f0f0f] hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg"
                 style={{ background: 'linear-gradient(135deg, #c8a96e, #b8945a)' }}
               >
-                Iniciar Projeto
+                Falar sobre um projeto
               </a>
-              <a
-                href="#sobre"
+              <Link
+                to="/projetos"
                 className="px-8 py-4 border border-[#c8a96e]/40 text-[#c8a96e] font-bold rounded-xl hover:bg-[#c8a96e]/10 hover:border-[#c8a96e] transition-all duration-300 whitespace-nowrap cursor-pointer"
               >
-                Sobre Mim
-              </a>
+                Ver os 9 sistemas
+              </Link>
               <Link
                 to="/curriculo"
                 className="px-8 py-4 border border-[#2a2a2a] text-[#707070] font-bold rounded-xl hover:border-[#c8a96e]/40 hover:text-[#c8a96e] transition-all duration-300 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
               >
                 <i className="ri-file-user-line text-base" />
-                Ver Currículo
+                Currículo
               </Link>
             </div>
 
-            {/* Stats */}
+            {/* Stats — números contados, não estimados */}
             <div
               className="flex gap-5 sm:gap-10 pt-6 border-t border-[#1e1e1e] justify-center"
               style={visible(350)}
             >
-              {[
-                { value: '6+', label: 'Anos de Experiência' },
-                { value: '50+', label: 'Projetos Entregues' },
-                { value: '100%', label: 'Satisfação' },
-              ].map((stat, i) => (
-                <React.Fragment key={i}>
-                  {i > 0 && <div key={`sep-${i}`} className="w-px bg-[#1e1e1e]" />}
-                  <div key={stat.label} className="stat-pop" style={{ animationDelay: `${i * 120}ms` }}>
+              {HEADLINE_STATS.map((stat, i) => (
+                <Fragment key={stat.label}>
+                  {i > 0 && <div className="w-px bg-[#1e1e1e]" />}
+                  <div className="stat-pop" style={{ animationDelay: `${i * 120}ms` }}>
                     <p className="text-3xl md:text-4xl font-black text-white">{stat.value}</p>
-                    <p className="text-xs md:text-sm text-[#606060] mt-1">{stat.label}</p>
+                    <p className="text-xs md:text-sm text-[#606060] mt-1 max-w-[110px] mx-auto leading-snug">{stat.label}</p>
                   </div>
-                </React.Fragment>
+                </Fragment>
               ))}
             </div>
           </div>
@@ -241,10 +238,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div
-        className="relative z-10 mt-10 md:mt-12"
-        style={visible(500)}
-      >
+      <div className="relative z-10 mt-10 md:mt-12" style={visible(500)}>
         <div className="flex flex-col items-center gap-2 animate-bounce">
           <span className="text-[#c8a96e] text-xs font-mono tracking-widest">SCROLL</span>
           <i className="ri-arrow-down-line text-[#c8a96e] text-xl" />
@@ -252,28 +246,21 @@ export default function HeroSection() {
       </div>
 
       <style>{`
-        .role-fade {
-          animation: roleFade 0.4s ease-in;
-        }
+        .role-fade { animation: roleFade 0.4s ease-in; }
         @keyframes roleFade {
           from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes pulseGlow {
           0%, 100% { transform: scale(1); opacity: 1; }
           50%       { transform: scale(1.12); opacity: 0.7; }
         }
-
         @keyframes floatParticle {
           0%, 100% { transform: translateY(0px) translateX(0px); }
           33%       { transform: translateY(-14px) translateX(6px); }
           66%       { transform: translateY(8px) translateX(-4px); }
         }
-
-        .hero-glitch {
-          animation: glitchAnim 0.55s steps(2) forwards;
-        }
+        .hero-glitch { animation: glitchAnim 0.55s steps(2) forwards; }
         @keyframes glitchAnim {
           0%   { text-shadow: 3px 0 #c8a96e, -3px 0 #fff; clip-path: inset(0 0 80% 0); }
           20%  { text-shadow: -4px 0 #c8a96e, 4px 0 #fff; clip-path: inset(20% 0 60% 0); }
@@ -282,13 +269,13 @@ export default function HeroSection() {
           80%  { text-shadow: 2px 0 #fff, -2px 0 #c8a96e; clip-path: inset(80% 0 0% 0); }
           100% { text-shadow: none; clip-path: inset(0 0 0 0); }
         }
-
-        .stat-pop {
-          animation: statPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-        }
+        .stat-pop { animation: statPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
         @keyframes statPop {
           from { opacity: 0; transform: scale(0.7) translateY(10px); }
           to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .role-fade, .hero-glitch, .stat-pop, .animate-bounce, .animate-pulse { animation: none !important; }
         }
       `}</style>
     </section>
