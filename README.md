@@ -1,120 +1,91 @@
 <div align="center">
-  <h1 align="center">⚡ Luiz Amboni | Portfólio Profissional</h1>
-  
-  <p align="center">
-    Um portfólio digital de alta performance, com estética Dark Premium, UX/UI refinado e desenvolvido com tecnologias modernas.
-  </p>
-
-  <p align="center">
-    <a href="https://react.dev/">
-      <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
-    </a>
-    <a href="https://www.typescriptlang.org/">
-      <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-    </a>
-    <a href="https://tailwindcss.com/">
-      <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
-    </a>
-    <a href="https://vitejs.dev/">
-      <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-    </a>
-  </p>
-
-  <p align="center">
-    <a href="#-sobre">Sobre</a> •
-    <a href="#-live-demo">Live Demo</a> •
-    <a href="#-funcionalidades">Funcionalidades</a> •
-    <a href="#-tecnologias">Tecnologias</a> •
-    <a href="#-instalação">Instalação</a> •
-    <a href="#-contato">Contato</a>
+  <h1>Luiz Amboni — Portfólio</h1>
+  <p><strong>Desenvolvedor full-stack · Sistemas sob medida, do ERP ao WhatsApp do cliente</strong></p>
+  <p>
+    <a href="https://amboni.info">amboni.info</a> ·
+    <a href="https://www.linkedin.com/in/luizamboni/">LinkedIn</a> ·
+    <a href="https://www.npmjs.com/package/@amboni/ui">@amboni/ui no npm</a>
   </p>
 </div>
 
 ---
 
-## 🚀 Live Demo
+## O que é
 
-A versão de produção deste projeto está disponível em:
+Portfólio de nove sistemas em produção ou entregues — CRM com jornada automatizada por
+WhatsApp oficial, checkout próprio com PIX, plataforma de atas de licitação, e-commerce com
+painel próprio, design system publicado no npm e um motor de licitação com IA.
 
-**https://amboni.info/**
+Duas regras valem para todo o conteúdo:
 
-## 🎨 Sobre
+1. **Nenhum número é estimado.** Os dados de cada projeto (módulos de API, tabelas,
+   migrations, testes, componentes) foram contados no repositório correspondente. A data da
+   contagem está na página de prova.
+2. **Nenhum depoimento é inventado.** A versão anterior deste site trazia seis depoimentos
+   que vinham como texto de exemplo do template. Foram removidos e substituídos por prova
+   verificável: link que abre, pacote que instala, código que se lê. A página `/prova`
+   explica isso.
 
-Este projeto é um portfólio pessoal desenvolvido para apresentar trabalhos de **Web Design, UX/UI e Desenvolvimento Full Stack**. O objetivo foi criar uma experiência imersiva (SPA - Single Page Application) que transmitisse profissionalismo, modernidade e atenção aos detalhes.
+Sistemas internos aparecem com print da **interface real com dados de demonstração** — nunca
+com dado de cliente, nem borrado — e sem link, porque quem clica em CRM interno cai numa tela
+de login.
 
-O design utiliza uma paleta de cores "Dark Premium" (Preto e Dourado), focada em contraste e legibilidade, com animações suaves de scroll e transições de página.
+## Stack
 
-## ✨ Funcionalidades
+React 19 · TypeScript · Vite · Tailwind CSS · React Router · Remix Icon · Deploy na Vercel
 
-- **Design Responsivo:** Layout fluido que se adapta perfeitamente a Desktops, Tablets e Mobile.
-- **Animações de Scroll:** Elementos que surgem suavemente conforme o usuário navega (`IntersectionObserver`).
-- **Currículo Híbrido (Web & Print):**
-  - **Modo Web:** Visualização interativa com Dark Mode.
-  - **Modo Impressão:** Ao usar `CTRL+P`, o CSS transforma a página em um layout A4 limpo, fundo branco e tipografia otimizada para papel.
-- **Performance:** Carregamento rápido utilizando Vite e otimização de assets.
-- **Navegação SPA:** Uso de `react-router-dom` para transições sem recarregamento.
-- **Integração WhatsApp:** Botão flutuante com link direto e mensagem pré-formatada.
-
-## 🚀 Tecnologias
-
-O projeto foi construído com as melhores práticas de Engenharia de Software atuais:
-
-- **Core:** React 18 + TypeScript
-- **Build Tool:** Vite
-- **Estilização:** TailwindCSS
-- **Ícones:** Remix Icon
-- **Linting:** ESLint + Prettier
-
-## 📂 Estrutura do Projeto
+## Rodando localmente
 
 ```bash
-src/
-├── components/      # Componentes globais (Layout, Botões, etc.)
-├── hooks/           # Custom Hooks (Animações, Scroll)
-├── pages/           # Páginas da aplicação
-│   ├── home/        # Landing Page Principal
-│   ├── curriculo/   # Página de Resume (com lógica de impressão)
-│   ├── projetos/    # Galeria detalhada
-│   └── ...
-└── main.tsx         # Ponto de entrada
+npm install
+cp .env.example .env      # preencha o endpoint do Formspree
+npm run dev               # http://localhost:3000
 ```
 
-## 💻 Instalação e Execução
+Sem `VITE_FORMSPREE_ENDPOINT` o formulário de contato não tenta enviar: ele avisa e manda a
+pessoa para o WhatsApp, em vez de falhar em silêncio.
 
-Pré-requisitos: Node.js (v18+) instalado.
+## Comandos
 
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/luiz-amboni/portifolio-amboni.git
-   cd portifolio-amboni
-   ```
+| Comando              | O que faz                                          |
+| -------------------- | -------------------------------------------------- |
+| `npm run dev`        | servidor de desenvolvimento na porta 3000          |
+| `npm run build`      | build de produção em `dist/`                       |
+| `npm run preview`    | serve o build para conferência                     |
+| `npm run lint`       | ESLint (zero warning permitido)                    |
+| `npm run type-check` | TypeScript sem emitir arquivos                     |
 
-2. **Instale as dependências:**
-   ```bash
-   npm install
-   # ou
-   yarn install
-   ```
+Antes de commitar: `npm run lint && npm run type-check && npm run build`.
 
-3. **Rode o servidor de desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
+## Onde fica cada coisa
 
-4. **Build para produção:**
-   ```bash
-   npm run build
-   ```
+```
+src/
+  constants.ts                  contato, links e os números do topo — fonte única
+  data/projects.ts              os 9 projetos: problema, features, decisão, stack, imagens
+  components/
+    SiteHeader.tsx              header e navegação de todas as páginas
+    ProjectCard.tsx             card de projeto (home e /projetos)
+    DefaultLayout.tsx           casca das páginas de conteúdo
+  pages/
+    home/                       hero, sobre, serviços, projetos, prova, contato
+    projetos/                   os 9 casos em detalhe, com âncora por slug
+    especialidades/             serviços, processo, stack, modelos de trabalho, FAQ
+    prova/                      compromissos técnicos e o que dá para conferir
+    resume/                     currículo, com versão A4 para impressão
+    privacy/                    política de privacidade
+public/projetos/                screenshots dos projetos (JPEG otimizado)
+```
 
-## 📬 Contato
+Ao adicionar um projeto, edite **apenas** `src/data/projects.ts`: a home, a página de projetos
+e o currículo leem daquele arquivo.
 
-Desenvolvido por **Luiz Otávio Amboni**.
+## Deploy
 
-[LinkedIn](https://www.linkedin.com/in/luiz-otavio-a-892a0a122/) • 
-[WhatsApp](https://wa.me/5548996815062) • 
-[Email](mailto:luiz.amboniii@gmail.com)
+Vercel, conectada a este repositório — `git push origin main` publica. O `vercel.json` traz o
+fallback de SPA (sem ele `/projetos` daria 404 ao recarregar) e o cache dos assets.
 
-## 📝 Licença
+## Licença
 
-Este projeto está sob licença proprietária. Todos os direitos reservados a **Luiz Otávio Amboni**.
-O código está disponível apenas para fins de estudo e apresentação de portfólio. A reprodução, distribuição ou uso comercial deste código ou design sem autorização expressa é proibida.
+Código sob licença MIT. O conteúdo — textos, imagens dos projetos e identidade visual — é de
+uso pessoal e não está coberto pela licença.

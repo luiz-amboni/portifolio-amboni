@@ -5,7 +5,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "comment": "SPA: qualquer rota sem extensão de arquivo cai no index.html, senão /projetos daria 404 ao recarregar",
       "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
