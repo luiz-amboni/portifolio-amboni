@@ -59,7 +59,7 @@ Antes de commitar: `npm run lint && npm run type-check && npm run build`.
 
 ## Onde fica cada coisa
 
-```
+```text
 src/
   constants.ts                  contato, links e os números do topo — fonte única
   data/projects.ts              os 9 projetos: problema, features, decisão, stack, imagens
@@ -82,8 +82,21 @@ e o currículo leem daquele arquivo.
 
 ## Deploy
 
-Vercel, conectada a este repositório — `git push origin main` publica. O `vercel.json` traz o
-fallback de SPA (sem ele `/projetos` daria 404 ao recarregar) e o cache dos assets.
+**Publicação manual, de propósito.** O projeto existe na Vercel (`portifolio-amboni`) mas
+**não** está conectado ao repositório: `git push` não publica nada. Para subir é preciso rodar
+o deploy à mão:
+
+```bash
+npx vercel deploy --prod
+```
+
+O `vercel.json` traz o fallback de SPA (sem ele `/projetos` daria 404 ao recarregar) e o cache
+dos assets. O formulário depende de `VITE_FORMSPREE_ENDPOINT` estar configurada no projeto da
+Vercel, além do `.env` local.
+
+> `amboni.info` ainda é servido pelo Readdy — os NS do domínio são deles. Apontar para a
+> Vercel exige mexer no DNS junto ao registrador; até então, o endereço público continua
+> mostrando a versão antiga.
 
 ## Licença
 

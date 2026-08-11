@@ -117,7 +117,7 @@ export const projects: Project[] = [
       'Webhook de reembolso e rotina diária de reconciliação entre pagamento e pedido',
     ],
     decision:
-      'A reconciliação é o que separa checkout de brinquedo de checkout de verdade. Todo mundo lembra do caminho felizadas; o dinheiro se perde no caminho infeliz — pagamento aprovado e pedido não criado, cliente que pagou duas vezes, reembolso que não voltou no estoque. Pagamento e pedido saem de sistemas diferentes, e um dia eles discordam.',
+      'A reconciliação é o que separa checkout de brinquedo de checkout de verdade. Todo mundo lembra do caminho feliz; o dinheiro se perde no caminho infeliz — pagamento aprovado e pedido não criado, cliente que pagou duas vezes, reembolso que não voltou no estoque. Pagamento e pedido saem de sistemas diferentes, e um dia eles discordam.',
     stack: ['Next.js', 'TypeScript', 'Vercel', 'Mercado Pago', 'PayPal', 'Frenet', 'Shopify Admin API'],
     images: [
       { src: '/projetos/safeimports-desktop.jpg', alt: 'Loja iSafe TechStore no desktop', caption: 'A loja que o checkout atende' },
@@ -237,7 +237,8 @@ export const projects: Project[] = [
       { src: '/projetos/place-01-hero.jpg', alt: 'Abertura do site do Place Lounge', caption: 'Abertura' },
       { src: '/projetos/place-02-agenda.jpg', alt: 'Agenda de eventos do Place Lounge', caption: 'Agenda de eventos' },
       { src: '/projetos/place-04-checkout.jpg', alt: 'Compra de ingresso do Place Lounge', caption: 'Compra de ingresso com PIX' },
-      { src: '/projetos/place-05-conta.jpg', alt: 'Área do cliente do Place Lounge com ingressos comprados', caption: 'Área do cliente' },
+      // A tela "Área do cliente" ficou de fora: o print existente foi feito com um
+      // cadastro de teste que usava CPF real. Só volta com o dado mascarado na origem.
       { src: '/projetos/place-03-galeria.jpg', alt: 'Galeria de fotos do Place Lounge', caption: 'Galeria' },
     ],
     note: 'Entregue e aguardando o lançamento da casa.',
